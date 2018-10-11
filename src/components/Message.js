@@ -3,17 +3,27 @@ import FullMessage from './FullMessage';
 
 class Message extends Component {
 	state = {
-		isOpen: false
+		isOpen: false,
+		important: ''
 	}
+	handleImportant = (importantVal) => {
+        this.setState({
+        	important: importantVal
+        });
+    }
 	render() {
 		const {message} = this.props;
+		console.log(this.state);
 		return (
-			<div className={`item_message ${this.state.isOpen ? 'Open' : 'Close'}`} onClick={this.handleClick}>
-				<span>{message.from_message}</span>
-				<span>{message.subject}</span>
-				<span>{message.preheader}</span>
-				<span>{message.received_at}</span>
-				<FullMessage id = {message.id} />
+			<div className={`message_item ${this.state.isOpen ? 'opened' : 'closed'}`} onClick={this.handleClick}>
+				<div className='message_info'>
+					<span>{message.from_message}</span>
+					<span>{message.subject}</span>
+					<span>{message.preheader}</span>
+					<span>{message.received_at.toLocaleString()}</span>
+				</div>
+				<div>{this.state.important}</div>
+				<FullMessage onImportant={this.handleImportant} id={message.id} />
 			</div>
 		)
 	}
