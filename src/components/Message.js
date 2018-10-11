@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import FullMessage from './FullMessage';
 
 class Message extends Component {
 	state = {
@@ -12,6 +13,7 @@ class Message extends Component {
 				<span>{message.subject}</span>
 				<span>{message.preheader}</span>
 				<span>{message.received_at}</span>
+				<FullMessage id = {message.id} />
 			</div>
 		)
 	}

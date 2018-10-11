@@ -6,14 +6,9 @@ import './styles.css';
 const urlApi = 'https://fmail.flyaps.com/api/v1/mailbox/messages/';
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			messages: []
-		};
+	state = {
+		messages: []
 	}
-
 	componentDidMount() {
 		fetch(urlApi)
 		.then(response => response.json())
