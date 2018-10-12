@@ -12,24 +12,31 @@ class FullMessage extends Component {
 			this.setState({
 				FullMessage: data 
 			})
-			this.handleImportantChange();
+			this.props.extendState({
+				important: data.important,
+				readable: data.is_read
+			});
 		})
 		.catch((err) => console.error('No response'));
 	}
 	render() {
 		const {FullMessage} = this.state;
+		let CC;
+		let BCC;
+		if (FullMessage.cc) {
+			CC = FullMessage.cc.map((item, i) => <div className="item_cc" key={i}>{item}</div>)
+		}
+		if (FullMessage.bcc) {
+			BCC = FullMessage.bcc.map((item, i) => <div className="item_cc" key={i}>{item}</div>)
+		}
 		return (
 			<div className='full_message'>
 				<div>{FullMessage.body}</div>
-				<div>{FullMessage.cc + ' ' + FullMessage.bcc}</div>
+				{CC}
+				{BCC}
 			</div>
 		)
 	}
-	handleImportantChange() {
-        // const important = this.state;
-        console.log(this.state)
-        // this.props.onImportant(important);
-    }
 }
 
 export default FullMessage;

@@ -27,7 +27,7 @@ class App extends Component {
 	}
 	render() {
 		const {messages} = this.state;
-		const messageElements = messages.map(message => <li className="item" key = {message.id}><Message message = {message}/></li>)
+		const messageElements = messages.map(message => <li className="item" key={message.id}><Message message={message}/></li>)
 		return (
 			<div className='container'>
 				<h1>flyaps messages</h1>

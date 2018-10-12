@@ -43,3 +43,13 @@ ul {
 .message_item.opened .full_message {
 	display: block;
 }
+.message_item .important,
+.message_item .read {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+.message_item .read {
+	left: auto;
+	right: 10px;
+}
